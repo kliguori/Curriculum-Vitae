@@ -15,7 +15,7 @@
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs;[ texliveFull ];
         shellHook = ''
-          alias gogogadget="latexmk -pdf -outdir=build"
+          alias gogogadget="latexmk -lualatex -outdir=Build"
         '';
       };
     };

@@ -1,34 +1,64 @@
-\documentclass[11pt,letter,sans]{moderncv} 
-\moderncvstyle{classic}
+\documentclass[11pt,a4paper,sans]{moderncv}
 \moderncvcolor{blue}
+\moderncvstyle{banking}
+
+\definecolor{gold}{rgb}{0.81,0.72,0.53}
+\definecolor{garnet}{rgb}{0.47,0.08,0.15}
+\colorlet{color2}{gold}
+\colorlet{color0}{black}
+\colorlet{color1}{garnet}
+\colorlet{lastnamecolor}{color1}
+\colorlet{namecolor}{lastnamecolor}
+\colorlet{firstnamecolor}{lastnamecolor}
+\colorlet{titlecolor}{color2}
+\colorlet{addresscolor}{color1}
+\colorlet{bodyrulecolor}{color2}
+\colorlet{sectioncolor}{color1}
+\colorlet{subsectioncolor}{color1}
+
+\usepackage[scale=0.875]{geometry}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\usepackage[english]{babel}
+\usepackage{datetime}
+\usepackage{hyperref}
+\usepackage[style=ieee,
+maxnames=3,
+minnames=3,
+sorting=ydnt]{biblatex}
+
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{Fira Sans}
+\setmonofont{Fira Code}[Ligatures=TeX]
+\setmathfont{TeX Gyre Pagella Math}
+
+\def\dates[#1.#2-#3.#4]{\yearabove{\monthname[#1]}{#2}--\yearabove{\monthname[#3]}{#4}}
+\hypersetup{colorlinks=true, urlcolor=garnet}
+
+\addbibresource{publications.bib}
+\addbibresource{presentations.bib}
 \nopagenumbers{}
 
-\usepackage[utf8]{inputenc}
-\usepackage[scale=0.85]{geometry}
+\newcommand{\yearabove}[2]{\parbox[t]{10mm}{\centering{#2\par\vspace{-2mm}\tiny{#1}\vspace{1mm}}}}
+\renewcommand*{\mkbibnamefamily}[1]{%
+	\ifdefstring{\namepartfamily}{Liguori}{\mkbibbold{#1}}{#1}}
+\renewcommand*{\mkbibnamegiven}[1]{%
+	\ifdefstring{\namepartgiven}{Kevin}{\mkbibbold{#1}}{#1}}
 
 \name{Kevin}{Liguori}
-\title{Curriculum Vitae}
-\address{921 Alachua Ave}{Tallahassee, FL}{32308}
-% \phone[mobile]{+1~(352)~667~4435}
 \email{kliguori@fsu.edu}
-
-\makeatletter\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}\makeatother
-
-\usepackage[resetlabels]{multibib}
-\newcites{pres,pub}{{},{}}
+\social[orcid]{0009-0004-9354-2796}
 
 \begin{document}
-\renewcommand*{\bibliographyhead}[1]{}
-
-\makecvtitle
-\vspace*{-1.0cm}
+\makecvhead
+\vspace{-0.6cm}
 
 \input{sections/education.tex}
-% publications
+\input{sections/publications.tex}
 \input{sections/talks.tex}
 \input{sections/research.tex}
 \input{sections/teaching.tex}
 \input{sections/honors.tex}
 \input{sections/skills.tex}
-
 \end{document}
