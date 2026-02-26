@@ -13,9 +13,10 @@
     in
     {
       devShells.${system}.default = pkgs.mkShell {
-        packages = [
-          pkgs.texliveFull
-        ];
+        packages = with pkgs;[ texliveFull ];
+        shellHook = ''
+          alias gogogadget="latexmk -pdf -outdir=build"
+        '';
       };
     };
 }
